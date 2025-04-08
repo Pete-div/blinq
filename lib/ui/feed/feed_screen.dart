@@ -26,6 +26,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
         title: const Text('Blinq'),
         centerTitle: true,
         surfaceTintColor: Colors.transparent,
+        actions: [],
       ),
       body: SafeArea(
         child: Stack(

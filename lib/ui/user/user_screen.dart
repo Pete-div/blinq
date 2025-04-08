@@ -48,7 +48,7 @@ class _UserScreenState extends ConsumerState<UserScreen> {
                               crossAxisCount: 2,
                               crossAxisSpacing: 10,
                               mainAxisSpacing: 10,
-                              mainAxisExtent: 215),
+                              mainAxisExtent: 170),
                       itemCount: vm.listOfUsers.length,
                       itemBuilder: (ctx, i) {
                         final user = users[i];
@@ -164,80 +164,7 @@ class _UserScreenState extends ConsumerState<UserScreen> {
                                                         : const SizedBox
                                                             .shrink()),
                                               ),
-                                              SizedBox(
-                                                height: 25,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .only(
-                                                          right: 5.0,
-                                                        ),
-                                                        child: TextButton(
-                                                          onPressed: () {},
-                                                          style: TextButton.styleFrom(
-                                                              backgroundColor:
-                                                                  AppColors
-                                                                      .lightBle,
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              shape: RoundedRectangleBorder(
-                                                                  side: BorderSide(
-                                                                      width: 1,
-                                                                      color: AppColors
-                                                                          .primaryColor),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              100))),
-                                                          child: NormalText(
-                                                            'Find',
-                                                            color: AppColors
-                                                                .primaryColor,
-                                                            weight:
-                                                                FontWeight.w400,
-                                                            size: 12,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .only(
-                                                                left: 5.0),
-                                                        child: TextButton(
-                                                            onPressed: () {},
-                                                            style: TextButton.styleFrom(
-                                                                side: BorderSide(
-                                                                    color: AppColors
-                                                                        .primaryColor),
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .zero,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            100))),
-                                                            child: NormalText(
-                                                              "Follow",
-                                                              color: AppColors
-                                                                  .primaryColorText,
-                                                              weight: FontWeight
-                                                                  .w400,
-                                                              size: 12,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
+                                       
                                             ],
                                           ),
                                         ),
