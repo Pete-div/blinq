@@ -2,8 +2,8 @@
 
 import 'package:bliqtest/_lib.dart';
 import 'package:bliqtest/ui/feed/feed_screen.dart';
-
-
+import 'package:bliqtest/view_models/app_themeprovider.dart';
+import 'package:crystal_navigation_bar/crystal_navigation_bar.dart';
 
 class DashBoardScreen extends ConsumerStatefulWidget {
   const DashBoardScreen({super.key});
@@ -15,7 +15,7 @@ class DashBoardScreen extends ConsumerStatefulWidget {
 class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
-        final dashBoardProvider = ref.watch(dashBoardModel);
+    final dashBoardProvider = ref.watch(dashBoardModel);
 
     return PopScope(
       canPop: false,
@@ -23,12 +23,9 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
         if (!didPop) {}
       },
       child: Scaffold(
+        extendBody: true,
         backgroundColor: AppColors.white,
-        body: Stack(
-          children: [
-            getBody(dashBoardProvider),
-          ],
-        ),
+        body: getBody(dashBoardProvider),
         bottomNavigationBar: const BottomNavbar(),
       ),
     );
@@ -41,53 +38,44 @@ class BottomNavbar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final dashBoardVm = ref.watch(dashBoardModel);
-    // final groupVm =ref.watch(groupViewModel);
-    // final unReadMsg=groupVm.getTotalUnreadMessages();
-    return BottomNavigationBar(
-      items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          label: "Feed",
-          icon:  GetSvgImage(
-           image: 'asset/svgs/in-active-home.svg',
-                      color:Colors.grey[600] ,
-                     
+    final appTheme = ref.watch(appThemeProvider);
 
-          ),
-          activeIcon:  GetSvgImage(
-           image: 'asset/svgs/home.svg',
-                      color:Colors.grey[100] ,
-
-          ),
-          backgroundColor: AppColors.blue,
-        ),
-        BottomNavigationBarItem(
-          label: "Users",
-          activeIcon:  GetSvgImage(
-           image: 'asset/svgs/in-active-user.svg',
-                      color:Colors.grey[100] ,
-
-          ),
-          icon:  GetSvgImage(
-           image: 'asset/svgs/im_active-user.svg',
-                      color:Colors.grey[600] ,
-
-          ),
-          backgroundColor: AppColors.white,
-        ),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 60,vertical: 0),
     
-      ],
-      currentIndex: dashBoardVm.currentindex,
-      selectedItemColor: AppColors.white,
-      selectedFontSize: 12.0,
-      backgroundColor: AppColors.primaryColor,
-      unselectedItemColor: const Color(0xff818181),
-      type: BottomNavigationBarType.fixed,
-      showSelectedLabels: true,
-      showUnselectedLabels: true,
-      onTap: dashBoardVm.changeTabIndex,
+      child: CrystalNavigationBar(
+        items: <CrystalNavigationBarItem>[
+          CrystalNavigationBarItem(
+            icon: Icons.sensor_occupied_outlined,
+            selectedColor: appTheme.isDark
+                ? AppColors.white
+                : AppColors.darkGrey,
+            unselectedIcon: Icons.sensor_occupied_sharp,
+          ),
+          CrystalNavigationBarItem(
+            icon: Icons.person_4_outlined,
+            selectedColor: appTheme.isDark
+                ? AppColors.white
+                : AppColors.darkGrey,
+            unselectedIcon: Icons.person_3_rounded,
+          ),
+        ],
+        currentIndex: dashBoardVm.currentindex,
+        selectedItemColor:
+            appTheme.isDark ? AppColors.white : AppColors.black,
+        indicatorColor:
+            appTheme.isDark ? AppColors.white : AppColors.black,
+        enablePaddingAnimation: true,
+        enableFloatingNavBar: true,
+        backgroundColor: Colors.transparent, // now handled by container
+        unselectedItemColor:
+            appTheme.isDark ? AppColors.lightGrey : AppColors.darkGrey,
+        onTap: dashBoardVm.changeTabIndex,
+      ),
     );
   }
 }
+
 
 Widget getBody(DashboardViewModel _) {
   List<Widget> pages = const [
@@ -99,5 +87,3 @@ Widget getBody(DashboardViewModel _) {
     children: pages,
   );
 }
-
-

@@ -36,7 +36,6 @@ class UserController extends ChangeNotifier {
     try {
       final result = await ref.read(firestoreServiceProvider).getUsers();
       _user = result;
-      print('the user: ${_user}');
     } catch (e) {
       debugPrint('Error fetching posts: $e');
     } finally {

@@ -6,6 +6,8 @@ abstract class AppColors {
   static Color get blue => const Color(0xFFC6FBE0);
   static Color get pink => const Color(0xFFF6BCB6);
   static Color get black => const Color(0xFF121212);
+ static  Color get  darkGrey => const Color(0xFF3D3D3D);
+  static   Color  get  darkGrey02 =>const Color(0xFF1A1A1A);
   static Color get red => const Color(0xffCD0000);
   static Color get primaryColor=> const Color(0xFF0A424A);
   static Color get secondaryColor=> const Color(0xffBDF2F9);

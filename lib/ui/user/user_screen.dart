@@ -1,6 +1,8 @@
 import 'package:bliqtest/_lib.dart';
-import 'package:bliqtest/ui/widget/cached_image.dart';
+import 'package:bliqtest/ui/widget/user_container.dart';
+import 'package:bliqtest/view_models/app_themeprovider.dart';
 import 'package:bliqtest/view_models/user_viewmodel.dart';
+import 'package:bliqtest/widgets/app_bar.dart';
 import 'package:bliqtest/widgets/text_widget.dart';
 
 class UserScreen extends ConsumerStatefulWidget {
@@ -21,171 +23,87 @@ class _UserScreenState extends ConsumerState<UserScreen> {
   @override
   Widget build(BuildContext context) {
     final vm = ref.watch(userControllerProvider);
+    final appTheme = ref.watch(appThemeProvider);
+
     final users = vm.listOfUsers;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Blinq Users'),
-        centerTitle: true,
-        surfaceTintColor: Colors.transparent,
-      ),
-      backgroundColor: AppColors.white,
+      appBar:
+    CustomAppBar(text: 'Blinq Users',),
+      backgroundColor: appTheme.scaffoldBackgroundColor,
       body: SafeArea(
-        child: Stack(
-          children: [
-            Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: RefreshIndicator(
-                  onRefresh: () =>
-                      ref.read(userControllerProvider).fetchUserNoLoading(),
-                  child: GridView.builder(
-                      scrollDirection: Axis.vertical,
-                      padding: const EdgeInsets.all(10),
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 10,
-                              mainAxisExtent: 170),
-                      itemCount: vm.listOfUsers.length,
-                      itemBuilder: (ctx, i) {
-                        final user = users[i];
-                        return ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: GridTile(
-                            child: GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 7),
-                                  height: 215,
-                                  width: 215,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white,
-                                  ),
-                                  child: Stack(
-                                    children: [
-                                      Container(
-                                        height: 60,
-                                        width: double.infinity,
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xffCFCFCF),
-                                          borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(10),
-                                            topRight: Radius.circular(10),
-                                          ),
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/svg/Frame 1618868935.png'),
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                      Positioned(
-                                        top: 30,
-                                        left: 0,
-                                        right: 0,
-                                        child: Center(
-                                          child: Column(
-                                            children: [
-                                              Center(
-                                                child: Container(
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                  ),
-                                                  child: ClipOval(
-                                                      child: Container(
-                                                    height: 60,
-                                                    width: 60,
-                                                    decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        color: AppColors
-                                                            .primaryColor),
-                                                    child: Center(
-                                                        child: user.photo == ''
-                                                            ? Text(
-                                                                user.name.length <
-                                                                        2
-                                                                    ? "${user.name.substring(0, 1).toUpperCase()}"
-                                                                    : "${user.name.substring(0, 2).toUpperCase()}",
-                                                                style: const TextStyle(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w700),
-                                                              )
-                                                            : CachedImage(
-                                                                url: user.photo,
-                                                                height: 60,
-                                                                width: 60,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              )),
-                                                  )),
-                                                ),
-                                              ),
-                                              const SizedBox(
-                                                height: 14,
-                                              ),
-                                              Center(
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    NormalText(
-                                                      '${user.name}',
-                                                      color: AppColors.black,
-                                                      weight: FontWeight.w500,
-                                                      size: 14,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Center(
-                                                child: SizedBox(
-                                                    height: 40,
-                                                    child: user.bio != ''
-                                                        ? NormalText(
-                                                            user.bio,
-                                                            color: AppColors
-                                                                .lightGrey,
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            weight:
-                                                                FontWeight.w400,
-                                                          
-                                                            size: 12,
-                                                          )
-                                                        : const SizedBox
-                                                            .shrink()),
-                                              ),
-                                       
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )),
+        child: vm.listOfUsers.isEmpty
+            ? Center(
+                child: Column(
+                  children: [
+                    const GetSvgImage(image: 'assets/svg/Empty State.svg'),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    NormalText(
+                      'No User Yet',
+                      size: 18,
+                      color:
+                          appTheme.isDark ? AppColors.white : AppColors.black,
+                      weight: FontWeight.w700,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    NormalText(
+                      "Connect with more users...",
+                      size: 12,
+                      color:
+                          appTheme.isDark ? AppColors.white : AppColors.black,
+                      weight: FontWeight.w400,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
+              )
+            : Stack(
+                children: [
+                  Column(
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: RefreshIndicator(
+                            onRefresh: () => ref
+                                .read(userControllerProvider)
+                                .fetchUserNoLoading(),
+                            child: GridView.builder(
+                                scrollDirection: Axis.vertical,
+                                padding: const EdgeInsets.all(10),
+                                physics: const AlwaysScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        crossAxisSpacing: 10,
+                                        mainAxisSpacing: 10,
+                                        mainAxisExtent: 210),
+                                itemCount: vm.listOfUsers.length,
+                                itemBuilder: (ctx, i) {
+                                  final user = users[i];
+                                  return UserContainer(
+                                      appTheme: appTheme, user: user);
+                                }),
                           ),
-                        );
-                      }),
-                ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (vm.isLoading)
+                    Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                ],
               ),
-            ),
-            if (vm.isLoading)
-              Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.primaryColor,
-                ),
-              ),
-          ],
-        ),
       ),
     );
   }

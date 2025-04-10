@@ -1,6 +1,8 @@
 import 'package:bliqtest/_lib.dart';
 import 'package:bliqtest/ui/widget/timeline_widget.dart';
+import 'package:bliqtest/view_models/app_themeprovider.dart';
 import 'package:bliqtest/view_models/post_viewmodel.dart';
+import 'package:bliqtest/widgets/app_bar.dart';
 
 class FeedScreen extends ConsumerStatefulWidget {
   const FeedScreen({super.key});
@@ -20,14 +22,13 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
   @override
   Widget build(BuildContext context) {
     final post = ref.watch(postControllerProvider);
+    final appTheme = ref.watch(appThemeProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Blinq'),
-        centerTitle: true,
-        surfaceTintColor: Colors.transparent,
-        actions: [],
-      ),
+      appBar: 
+         CustomAppBar(text: 'Blinq',),
+
+      backgroundColor: appTheme.scaffoldBackgroundColor,
       body: SafeArea(
         child: Stack(
           children: [
@@ -39,7 +40,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> {
                   children: [
                     TimeLineWidget(),
                   ],
-                ))),
+                ),),),
             if (post.isLoading)
               Center(
                 child: CircularProgressIndicator(

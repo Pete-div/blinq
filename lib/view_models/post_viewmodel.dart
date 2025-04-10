@@ -22,7 +22,6 @@ class PostController extends ChangeNotifier {
     try {
       final result = await ref.read(firestoreServiceProvider).getPosts();
       _posts = result;
-      print(posts);
     } catch (e) {
       debugPrint('Error fetching posts: $e');
     } finally {
@@ -34,14 +33,6 @@ class PostController extends ChangeNotifier {
     try {
       final result = await ref.read(firestoreServiceProvider).getPosts();
       _posts = result;
-            print("the post 1 ${_posts[0]}");
-             print("the post 2 ${_posts[1]}");
-              print("the post 3 ${_posts[2]}");
-               print("the post 4 ${_posts[3]}");
-                print("the post 5 ${_posts[4]}");
-                 print("the post 6 ${_posts[5]}");
-                  print("the post 7 ${_posts[6]}");
-                    print("the post 8 ${_posts[7]}");
     } catch (e) {
       debugPrint('Error fetching posts: $e');
     } finally {

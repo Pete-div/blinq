@@ -1,5 +1,6 @@
 
 import 'package:bliqtest/_lib.dart';
+import 'package:bliqtest/view_models/app_themeprovider.dart';
 
 class NormalText extends ConsumerWidget {
   final String? text;
@@ -28,7 +29,7 @@ class NormalText extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-   // final appTheme = ref.watch(appThemeProvider);
+   final appTheme = ref.watch(appThemeProvider);
     return Text(
       text ?? '-',
       softWrap: softWrap,
@@ -38,7 +39,7 @@ class NormalText extends ConsumerWidget {
       style: TextStyle(
         fontWeight: weight ?? FontWeight.w400,
         fontSize: size,
-        color: color ?? AppColors.black,
+        color: color ?? (appTheme.isDark?Colors.white:Colors.white),
         height: height?.toFigmaHeight(size),
         fontFamily: fontFamily ?? "AeonikReguler",
         decoration: decoration,

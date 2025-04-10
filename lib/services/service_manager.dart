@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../_lib.dart';
-import '../models/user_model.dart';
-import '../models/post_model.dart';
+
 final firestoreServiceProvider = Provider<FirestoreService>((ref) {
   return FirestoreService();
 });

@@ -1,4 +1,6 @@
 
+// ignore_for_file: deprecated_member_use
+
 import 'package:bliqtest/utils/app_theme/app_theme.dart';
 import 'package:bliqtest/utils/app_theme/theme.repo.dart';
 import 'package:flutter/material.dart';
