@@ -20,45 +20,39 @@ class TimeLineWidget extends ConsumerWidget {
     // final posts = postList..sort((a, b) => b.timestamp.compareTo(a.timestamp));
 
     return posts.isEmpty
-        ?  Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-               const  SizedBox(
-                height: 100,
-              ),
-             const GetSvgImage(image: 'asset/svgs/Empty State.svg'),
-            const  SizedBox(
-                height: 6,
-              ),
-              NormalText(
-                'No Post on your Feed?',
-                color: appTheme.isDark
-                                  ? AppColors.white
-                                  : AppColors.black,
-              ),
-           const   SizedBox(
-                height: 10,
-              ),
-              NormalText(
-                "Connect with other users to get more feeds",
-                color: appTheme.isDark
-                                  ? AppColors.white
-                                  : AppColors.black,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-            ],
-          ),
-        )
+        ? Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 100,
+                ),
+                const GetSvgImage(image: 'asset/svgs/Empty State.svg'),
+                const SizedBox(
+                  height: 6,
+                ),
+                NormalText(
+                  'No Post on your Feed?',
+                  color: appTheme.isDark ? AppColors.white : AppColors.black,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                NormalText(
+                  "Connect with other users to get more feeds",
+                  color: appTheme.isDark ? AppColors.white : AppColors.black,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
+          )
         : AnimationLimiter(
             child: Column(
               children: List.generate(posts.length, (index) {
                 final post = posts[index];
-
-
 
                 if (post.noMedia == true &&
                     post.isImage == false &&

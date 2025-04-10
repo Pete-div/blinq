@@ -51,19 +51,6 @@ class AppBaseThemeValues {
     primaryColor: const Color(0xFF0C382E),
   );
 
-  // static Color get bodyText => const Color(0xFF9E9E9E);
-  // static Color get inactive => const Color(0xFF424242);
-  // static Color get helpText => const Color(0xFF616161);
-  // static Color get inputFieldText => const Color(0xFFFAFAFA);
-  // static Color get canvas => const Color(0xFF121212);
-  // static Color get inputFieldBg => const Color(0xFF222222);
-  // static Color get inputFieldLabel => const Color(0xFF616161);
-  // static Color get grey3 => const Color(0xFF383838);
-  // static Color get paidStatus => const Color(0xFF00F872);
-  // static Color get pendingStatus => const Color(0xFFE7B418);
-  // static Color get rejectedStatus => const Color(0xFFCD0000);
-  // static Color get acceptedStatus => const Color(0xFFB7F800);
-  // static Color get dottedColor => const Color(0xFF616161);
 
   static final darkTheme = BaseTheme(
     isDark: true,

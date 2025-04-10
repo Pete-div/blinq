@@ -27,8 +27,9 @@ class _UserScreenState extends ConsumerState<UserScreen> {
 
     final users = vm.listOfUsers;
     return Scaffold(
-      appBar:
-    CustomAppBar(text: 'Blinq Users',),
+      appBar: CustomAppBar(
+        text: 'Blinq Users',
+      ),
       backgroundColor: appTheme.scaffoldBackgroundColor,
       body: SafeArea(
         child: vm.listOfUsers.isEmpty

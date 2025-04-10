@@ -32,8 +32,9 @@ class UserContainer extends StatelessWidget {
                 height: 60,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color:
-                      appTheme.isDark ? AppColors.darkGrey : const Color(0xffCFCFCF),
+                  color: appTheme.isDark
+                      ? AppColors.darkGrey
+                      : const Color(0xffCFCFCF),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(10),
                     topRight: Radius.circular(10),
@@ -65,8 +66,12 @@ class UserContainer extends StatelessWidget {
                                 child: user.photo == ''
                                     ? Text(
                                         user.name.length < 2
-                                            ? user.name.substring(0, 1).toUpperCase()
-                                            : user.name.substring(0, 2).toUpperCase(),
+                                            ? user.name
+                                                .substring(0, 1)
+                                                .toUpperCase()
+                                            : user.name
+                                                .substring(0, 2)
+                                                .toUpperCase(),
                                         style: const TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.w700),

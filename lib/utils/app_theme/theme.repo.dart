@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import'package:bliqtest/utils/pref_data.dart' as pref;
+import 'package:bliqtest/utils/pref_data.dart' as pref;
 
 ThemeRepo themeRepo = ThemeRepo();
 

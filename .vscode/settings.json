@@ -3,9 +3,13 @@
         "Blinq",
         "Blinqpay",
         "bliqtest",
+        "blurhash",
         "checkdata",
         "currentindex",
+        "firestore",
         "helptext",
+        "riverpod",
+        "Schyler",
         "viewmodel"
     ]
 }

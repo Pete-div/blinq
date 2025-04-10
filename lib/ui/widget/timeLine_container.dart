@@ -17,27 +17,28 @@ class TextFeedContainer extends StatelessWidget {
 
   final PostModel post;
   final BaseTheme appTheme;
-    String capitalizeFirstLetter(String text) {
-                  if (text.isEmpty) {
-                    return text;
-                  }
-                  return text[0].toUpperCase() + text.substring(1);
-                }
-                     String formatTimeToHour(int timestamp) {
-                  DateTime postDate =
-                      DateTime.fromMillisecondsSinceEpoch(timestamp);
-                  DateTime currentDate = DateTime.now();
-                  Duration difference = currentDate.difference(postDate);
+  String capitalizeFirstLetter(String text) {
+    if (text.isEmpty) {
+      return text;
+    }
+    return text[0].toUpperCase() + text.substring(1);
+  }
 
-                  if (difference.inMinutes < 60) {
-                    return '${difference.inMinutes} minutes ago';
-                  } else if (difference.inHours < 24) {
-                    return '${difference.inHours} hours ago';
-                  } else {
-                    int days = difference.inDays;
-                    return '$days days ago';
-                  }
-                }
+  String formatTimeToHour(int timestamp) {
+    DateTime postDate = DateTime.fromMillisecondsSinceEpoch(timestamp);
+    DateTime currentDate = DateTime.now();
+    Duration difference = currentDate.difference(postDate);
+
+    if (difference.inMinutes < 60) {
+      return '${difference.inMinutes} minutes ago';
+    } else if (difference.inHours < 24) {
+      return '${difference.inHours} hours ago';
+    } else {
+      int days = difference.inDays;
+      return '$days days ago';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SlideAnimation(
@@ -48,8 +49,7 @@ class TextFeedContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             ContainerWidget(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               borderRadius: BorderRadius.circular(8),
               margin: const EdgeInsets.symmetric(vertical: 5),
               child: Row(
@@ -65,22 +65,17 @@ class TextFeedContainer extends StatelessWidget {
                       color: AppColors.primaryColor,
                     ),
                     child: const GetSvgImage(
-                        image:
-                            'asset/svgs/users-avatar-svgrepo-com.svg'),
+                        image: 'asset/svgs/users-avatar-svgrepo-com.svg'),
                   ),
                   Column(
-                      crossAxisAlignment:
-                          CrossAxisAlignment.start,
-                      mainAxisAlignment:
-                          MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
                             width: 300,
                             child: Column(
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                              mainAxisAlignment:
-                                  MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 NormalText(
                                   post.username,
@@ -92,8 +87,7 @@ class TextFeedContainer extends StatelessWidget {
                                   height: 2,
                                 ),
                                 NormalText(
-                                  formatTimeToHour(
-                                      post.timestamp),
+                                  formatTimeToHour(post.timestamp),
                                   size: 8,
                                   weight: FontWeight.w300,
                                   color: appTheme.isDark
@@ -142,27 +136,28 @@ class ImageFeedContainer extends StatelessWidget {
 
   final PostModel post;
   final BaseTheme appTheme;
-    String capitalizeFirstLetter(String text) {
-                  if (text.isEmpty) {
-                    return text;
-                  }
-                  return text[0].toUpperCase() + text.substring(1);
-                }
-                     String formatTimeToHour(int timestamp) {
-                  DateTime postDate =
-                      DateTime.fromMillisecondsSinceEpoch(timestamp);
-                  DateTime currentDate = DateTime.now();
-                  Duration difference = currentDate.difference(postDate);
+  String capitalizeFirstLetter(String text) {
+    if (text.isEmpty) {
+      return text;
+    }
+    return text[0].toUpperCase() + text.substring(1);
+  }
 
-                  if (difference.inMinutes < 60) {
-                    return '${difference.inMinutes} minutes ago';
-                  } else if (difference.inHours < 24) {
-                    return '${difference.inHours} hours ago';
-                  } else {
-                    int days = difference.inDays;
-                    return '$days days ago';
-                  }
-                }
+  String formatTimeToHour(int timestamp) {
+    DateTime postDate = DateTime.fromMillisecondsSinceEpoch(timestamp);
+    DateTime currentDate = DateTime.now();
+    Duration difference = currentDate.difference(postDate);
+
+    if (difference.inMinutes < 60) {
+      return '${difference.inMinutes} minutes ago';
+    } else if (difference.inHours < 24) {
+      return '${difference.inHours} hours ago';
+    } else {
+      int days = difference.inDays;
+      return '$days days ago';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SlideAnimation(
@@ -174,8 +169,7 @@ class ImageFeedContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             ContainerWidget(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               margin: const EdgeInsets.symmetric(vertical: 5),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,22 +184,17 @@ class ImageFeedContainer extends StatelessWidget {
                       color: AppColors.primaryColor,
                     ),
                     child: const GetSvgImage(
-                        image:
-                            'asset/svgs/users-avatar-svgrepo-co.svg'),
+                        image: 'asset/svgs/users-avatar-svgrepo-co.svg'),
                   ),
                   Column(
-                      crossAxisAlignment:
-                          CrossAxisAlignment.start,
-                      mainAxisAlignment:
-                          MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
                             width: 300,
                             child: Column(
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                              mainAxisAlignment:
-                                  MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 NormalText(
                                   post.username,
@@ -217,8 +206,7 @@ class ImageFeedContainer extends StatelessWidget {
                                   height: 2,
                                 ),
                                 NormalText(
-                                  formatTimeToHour(
-                                      post.timestamp),
+                                  formatTimeToHour(post.timestamp),
                                   size: 8,
                                   color: appTheme.isDark
                                       ? AppColors.white
@@ -233,8 +221,7 @@ class ImageFeedContainer extends StatelessWidget {
                         SizedBox(
                             width: 300,
                             child: NormalText(
-                              capitalizeFirstLetter(
-                                  post.description),
+                              capitalizeFirstLetter(post.description),
                               color: appTheme.isDark
                                   ? AppColors.white
                                   : AppColors.black,
@@ -243,8 +230,7 @@ class ImageFeedContainer extends StatelessWidget {
                           height: 8,
                         ),
                         ClipRRect(
-                          borderRadius:
-                              BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12),
                           child: CachedImage(
                               url: post.thumbnail ?? '',
                               height: 300,
@@ -277,27 +263,28 @@ class VideoFeedContainer extends StatelessWidget {
 
   final PostModel post;
   final BaseTheme appTheme;
-     String capitalizeFirstLetter(String text) {
-                  if (text.isEmpty) {
-                    return text;
-                  }
-                  return text[0].toUpperCase() + text.substring(1);
-                }
-                     String formatTimeToHour(int timestamp) {
-                  DateTime postDate =
-                      DateTime.fromMillisecondsSinceEpoch(timestamp);
-                  DateTime currentDate = DateTime.now();
-                  Duration difference = currentDate.difference(postDate);
+  String capitalizeFirstLetter(String text) {
+    if (text.isEmpty) {
+      return text;
+    }
+    return text[0].toUpperCase() + text.substring(1);
+  }
 
-                  if (difference.inMinutes < 60) {
-                    return '${difference.inMinutes} minutes ago';
-                  } else if (difference.inHours < 24) {
-                    return '${difference.inHours} hours ago';
-                  } else {
-                    int days = difference.inDays;
-                    return '$days days ago';
-                  }
-                }
+  String formatTimeToHour(int timestamp) {
+    DateTime postDate = DateTime.fromMillisecondsSinceEpoch(timestamp);
+    DateTime currentDate = DateTime.now();
+    Duration difference = currentDate.difference(postDate);
+
+    if (difference.inMinutes < 60) {
+      return '${difference.inMinutes} minutes ago';
+    } else if (difference.inHours < 24) {
+      return '${difference.inHours} hours ago';
+    } else {
+      int days = difference.inDays;
+      return '$days days ago';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SlideAnimation(
@@ -309,8 +296,7 @@ class VideoFeedContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             ContainerWidget(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               margin: const EdgeInsets.symmetric(vertical: 5),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -328,17 +314,14 @@ class VideoFeedContainer extends StatelessWidget {
                         image: 'asset/svgs/in-active-user.svg'),
                   ),
                   Column(
-                    crossAxisAlignment:
-                        CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
                           width: 300,
                           child: Column(
-                            crossAxisAlignment:
-                                CrossAxisAlignment.start,
-                            mainAxisAlignment:
-                                MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               NormalText(
                                 post.username,
@@ -350,8 +333,7 @@ class VideoFeedContainer extends StatelessWidget {
                                 height: 2,
                               ),
                               NormalText(
-                                formatTimeToHour(
-                                    post.timestamp),
+                                formatTimeToHour(post.timestamp),
                                 size: 8,
                                 color: appTheme.isDark
                                     ? AppColors.white
@@ -366,8 +348,7 @@ class VideoFeedContainer extends StatelessWidget {
                       SizedBox(
                           width: 300,
                           child: NormalText(
-                            capitalizeFirstLetter(
-                                post.description),
+                            capitalizeFirstLetter(post.description),
                             color: appTheme.isDark
                                 ? AppColors.white
                                 : AppColors.black,
