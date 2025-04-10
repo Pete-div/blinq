@@ -26,7 +26,7 @@ class TimeLineWidget extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 100,
+                  height: 200,
                 ),
                 const GetSvgImage(image: 'asset/svgs/Empty State.svg'),
                 const SizedBox(
