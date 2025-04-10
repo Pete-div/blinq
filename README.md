@@ -1,16 +1,39 @@
 # bliqtest
 
-A new Flutter project.
+During the development of this project, I followed a MVVM (Model-View-ViewModel) architecture to ensure a clean separation of concerns and enhance testability and scalability.
 
-## Getting Started
+✅ State Management
+I used Riverpod, a robust and scalable state management solution in Flutter, which helped:
 
-This project is a starting point for a Flutter application.
+Manage application state across views and services efficiently.
 
-A few resources to get you started if this is your first Flutter project:
+Simplify rebuilding of widgets only when necessary.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Keep the UI reactive and modular.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🧩 Widget Design
+To maintain readability and modularity, I broke the UI into small reusable widgets. Each logical section of the app (like avatar, post media, headers, etc.) has its own self-contained widget to:
+
+Improve maintainability.
+
+Enhance reusability.
+
+Allow isolated testing and styling.
+
+🔥 Firebase Firestore Integration
+I connected to Firebase Firestore to fetch both user and post data. I implemented logic to:
+
+Display a clean and helpful UI when the data list is empty (both for users and posts).
+
+Dynamically decide what widget to show for each post based on its metadata (noMedia, isVideo, isImage, etc.).
+
+Ensure that the app doesn't break if some fields are missing or null.
+
+🔁 Refresh Logic
+A pull-to-refresh (dropdown refresh) mechanism was added to:
+
+Let users manually fetch and update the feed.
+
+Improve UX by always giving a sense of real-time content.
+
+
